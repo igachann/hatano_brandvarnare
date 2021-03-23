@@ -36,7 +36,29 @@
             <label>9号室なしを考慮する</label>
             <input type="checkbox" name="exception-nine" value="1" checked="checked">
         </div>
-        <input  class="setting" type="submit" name="btn_confirm" value="設定する">
+
+        <div class="element_wrap">
+            <label class="wf-nicomoji">セットバックを考慮する</label>
+            <select name="setback_floor">
+                <?php for ($i=1; $i<=50; $i++) {?>
+                    <option name="setback_floor" value="<?php echo $i ?>"><?php echo $i.'階' ?></option>
+                <?php } ?>
+            </select>
+
+            <select name="setback_start_room">
+                <?php for ($i=1; $i<=30; $i++) {?>
+                    <option name="setback_start_room" value="<?php echo $i ?>"><?php echo $i.'号室' ?></option>
+                <?php } ?>
+            </select>
+            〜
+            <select name="setback_end_room">
+                <?php for ($i=1; $i<=30; $i++) {?>
+                    <option name="setback_end_room" value="<?php echo $i ?>"><?php echo $i.'号室' ?></option>
+                <?php } ?>
+            </select><br>
+
+
+            <input  class="setting" type="submit" name="btn_confirm" value="設定する">
     </form>
 </div>
 

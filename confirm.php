@@ -1,24 +1,45 @@
 <?php
-//var_dump($_POST);
+var_dump($_POST);
 $floor = $_POST['floor'];
 $room = $_POST['room'];
+$setback_floor = $_POST['setback_floor'];
+$setback_start_room = $_POST['setback_start_room'];
+$setback_end_room = $_POST['setback_end_room'];
 $room_lists = [];
 
 for ($i=1; $i <= $floor; $i++){
-    for ($v=1; $v <= $room; $v++){
-        if(isset($_POST['exception-four'])){
-            if($v === 4){
-                continue;
+    if ($setback_floor == $i){
+        for ($v=$setback_start_room; $v <= $setback_end_room; $v++){
+            if(isset($_POST['exception-four'])){
+                if($v === 4){
+                    continue;
+                }
             }
-        }
-        if(isset($_POST['exception-nine'])){
-            if($v === 9){
-                continue;
+            if(isset($_POST['exception-nine'])){
+                if($v === 9){
+                    continue;
+                }
             }
+            $room_lists[] .= $i.sprintf('%02d',$v).'<br>';
         }
-        $room_lists[] .= $i.sprintf('%02d',$v).'<br>';
+    }else{
+        for ($v=1; $v <= $room; $v++){
+            if(isset($_POST['exception-four'])){
+                if($v === 4){
+                    continue;
+                }
+            }
+            if(isset($_POST['exception-nine'])){
+                if($v === 9){
+                    continue;
+                }
+            }
+            $room_lists[] .= $i.sprintf('%02d',$v).'<br>';
+        }
     }
 }
+
+
 ?>
 
 <!DOCTYPE html>
